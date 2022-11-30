@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -22,10 +23,25 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Link href="/articles" className={styles.card}>
+            <h2>Go to articles</h2>
+            <p>Articles list are fetched using csr</p>
+          </Link>
+
+          <Link href="/articles/ssr" className={styles.card}>
+            <h2>Go to an article</h2>
+            <p>Article data is fetched using ssr</p>
+          </Link>
+
+          <Link href="/articles/ssg" className={styles.card}>
+            <h2>Go to an article</h2>
+            <p>Article data is fetched using ssg</p>
+          </Link>
+
+          <Link href="/articles/test" className={styles.card}>
+            <h2>Go to an article</h2>
+            <p>Article data is fetched using ssg</p>
+          </Link>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Learn &rarr;</h2>
