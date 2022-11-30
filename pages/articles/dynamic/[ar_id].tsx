@@ -6,9 +6,8 @@ import ReactHtmlParser from 'react-html-parser';
 type proptype = {
   post: {
     id: string;
-    name: string;
-    introduction: string;
-    text: string;
+    title: string;
+    body: string;
   };
 };
 
@@ -25,9 +24,8 @@ const Post = ({ post }: proptype) => {
             Go back
           </Link>
           <div>
-            <h2>{post.name}</h2>
-            <p>{ReactHtmlParser(post.introduction)}</p>
-            <p>{ReactHtmlParser(post.text)}</p>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
           </div>
         </div>
       </main>
@@ -40,7 +38,7 @@ export default Post;
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
   // Fetch data from external API
-  // const res = await fetch(`http://localhost:3004/articles`)
+  // const res = await fetch(`http://localhost:3004/posts`)
   // const data = await res.json()
 
   // const paths = data.map((post: any) => ({
@@ -48,7 +46,7 @@ export async function getStaticPaths() {
   // }))
 
   return {
-    paths: [{ params: { ar_id: 'd81af7f9ebf1ceb7e23d690c97b96025' } }, { params: { ar_id: '2d1a8c2a6ba0872a614e344b73a2eeef' } }],
+    paths: [{ params: { ar_id: '1' } }, { params: { ar_id: '2' } }],
     // paths,
     fallback: false, // can also be true or 'blocking'
   }
@@ -56,7 +54,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: any){
   const { params } = context;
-  const response = await fetch(`http://localhost:3004/articles/${ params.ar_id }`);
+  const response = await fetch(`http://localhost:3004/posts/${ params.ar_id }`);
   const data = await response.json();
  
   return {

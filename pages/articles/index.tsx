@@ -3,12 +3,12 @@ import Link from "next/link";
 import styles from "../../styles/Home.module.css";
 
 export default function Articles() {
-  const [data, setData] = useState<{id: string; name: string;}[]>([]);
+  const [data, setData] = useState<{id: number; title: string; body: string;}[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3004/articles")
+    fetch("http://localhost:3004/posts")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -25,7 +25,8 @@ export default function Articles() {
         return (
             <li key={post.id}>
                 <Link href={link}>
-                  <h2>{post.name}</h2>
+                  <h2>{post.title}</h2>
+                  <p>{post.body}</p>
                 </Link>
             </li>
         );
