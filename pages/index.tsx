@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import { Button } from "../components/Button.js"
+import { MultiLink } from "../components/Link.js"
 
 export default function Home() {
   return (
@@ -23,22 +25,19 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <Link href="/articles" className={styles.card}>
+          <Button></Button>
+          <MultiLink></MultiLink>
+          <Link href="/articles" className={styles.card} prefetch={false}>
             <h2>Go to articles</h2>
             <p>Articles list are fetched using csr</p>
           </Link>
 
-          <Link href="/articles/ssr" className={styles.card}>
+          <Link href="/articles/ssr" className={styles.card} prefetch={false}>
             <h2>Go to an article</h2>
             <p>Article data is fetched using ssr</p>
           </Link>
 
-          <Link href="/articles/ssg" className={styles.card}>
-            <h2>Go to an article</h2>
-            <p>Article data is fetched using ssg</p>
-          </Link>
-
-          <Link href="/articles/test" className={styles.card}>
+          <Link href="/articles/ssg" className={styles.card} prefetch={false}>
             <h2>Go to an article</h2>
             <p>Article data is fetched using ssg</p>
           </Link>

@@ -108,6 +108,14 @@
   margin-left: 0.5rem;
 }
 
+.list_title {
+  font-weight: normal;
+}
+
+.list_title:hover {
+  color: steelblue;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
