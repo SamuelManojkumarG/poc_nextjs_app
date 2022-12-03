@@ -40,17 +40,17 @@ export default Post;
 // Generates `/posts/1` and `/posts/2`
 export async function getStaticPaths() {
   // Fetch data from external API
-  // const res = await fetch(`http://localhost:3004/articles`)
-  // const data = await res.json()
+  const res = await fetch(`http://localhost:3004/articles`)
+  const data = await res.json()
 
-  // const paths = data.map((post: any) => ({
-  //   params: { ar_id: String(post.id) },
-  // }))
+  const paths = data.map((post: any) => ({
+    params: { ar_id: String(post.id) },
+  }))
 
   return {
-    paths: [{ params: { ar_id: 'd81af7f9ebf1ceb7e23d690c97b96025' } }, { params: { ar_id: '2d1a8c2a6ba0872a614e344b73a2eeef' } }],
-    // paths,
-    fallback: false, // can also be true or 'blocking'
+    // paths: [{ params: { ar_id: 'd81af7f9ebf1ceb7e23d690c97b96025' } }, { params: { ar_id: '2d1a8c2a6ba0872a614e344b73a2eeef' } }],
+    paths,
+    fallback: 'blocking', // can be true/false or 'blocking'
   }
 }
 
@@ -63,7 +63,7 @@ export async function getStaticProps(context: any){
       props:{
           post: data,
       },
-      revalidate: 10,
+      revalidate: 1,
   }
 }
 

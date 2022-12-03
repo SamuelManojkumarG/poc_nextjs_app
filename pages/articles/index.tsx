@@ -24,9 +24,9 @@ export default function Articles() {
         var link = "/articles/dynamic/" + post.id;
         return (
             <li key={post.id}>
-                <Link href={link}>
-                  <h2>{post.name}</h2>
-                </Link>
+                <a href={link}>
+                  <h2 className={styles.list_title}>{post.name}</h2>
+                </a>
             </li>
         );
       })

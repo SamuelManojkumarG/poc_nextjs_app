@@ -5,8 +5,9 @@ import React from "react";
 
 type proptype ={
   data: {
-    title: string;
-    body: string;
+    name: string;
+    introduction: string;
+    text: string;
   }
 }
 
@@ -20,8 +21,9 @@ export default function Articles({data}: proptype) {
           </Link>
 
           <div>
-            <h2>{data.title}</h2>
-            <React.Fragment>{ReactHtmlParser(data.body)}</React.Fragment>
+            <h2>{data.name}</h2>
+            <React.Fragment>{ReactHtmlParser(data.introduction)}</React.Fragment>
+            <React.Fragment>{ReactHtmlParser(data.text)}</React.Fragment>
           </div>
         </div>
       </main>
@@ -35,7 +37,7 @@ export default function Articles({data}: proptype) {
 export async function getStaticProps() {
     // Call an external API endpoint to get posts.
     // You can use any data fetching library
-    const res = await fetch('http://localhost:3004/articles/1')
+    const res = await fetch('http://localhost:3004/articles/d81af7f9ebf1ceb7e23d690c97b96025')
     const data = await res.json()
   
     // By returning { props: { posts } }, the Blog component
